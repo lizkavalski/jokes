@@ -1,19 +1,35 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, Text, View,Button} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
 import {When} from './when.js'
 import { WorldAlignmentTypes } from 'expo/build/AR';
 
-export default function RandomStr(){  
+export default function Random(){  
    const [random,setRandom]=useState(' Just Shake your phone for a joke')
 
     // let listOfStr=['Yes','No','Try Again Later','Might Not Be A Good Idea', 'Go for it','Aright','Definitely go for it', 'That A Great Idea', 'You Might Want to Rethink Your Decisions'];
   // site for the joke api to pull randon joke
-    let randomMaker = listOfStr[Math.floor(Math.random()*listOfStr.length)];
+  let url = "https://official-joke-api.appspot.com/jokes/random";
+
+  let componentDidMount(){
+    fetch(url)
+      .then(results => results.json())
+      .then((resultsJson) => {
+        this.SetState({
+          'Question': results.setup,
+          'Answer': results.punchline
+        })
+      })
+      .catch(error=>console.log(error)) //to catch the errors if any
+  }
+
+
+
+    //let randomMaker = listOfStr[Math.floor(Math.random()*listOfStr.length)];
   //console.log(randomMaker,'line 8')
    
   const _handlePress=()=>{
-      setRandom(randomMaker)
+      setRandom(Random)
      // console.log('I got in!')
     }
  useEffect(()=>{
@@ -32,7 +48,7 @@ export default function RandomStr(){
           <Button title='Click on Me' onPress={_handlePress}/>
         </When> */}
         <Text style= {styles.text}>
-         {random}
+         {this.state}
         </Text>
      </View>
     );
@@ -43,7 +59,7 @@ const styles = StyleSheet.create({
     fontSize:12,
     //alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor:'#1E1F27',
+    backgroundColor:'#fbd4ff',
     padding:80,
   },
   text:{

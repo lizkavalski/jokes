@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View,Button} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
+import{styles} from "../styles/styles.js"
 import {When} from './when.js'
 import { WorldAlignmentTypes } from 'expo/build/AR';
 
@@ -53,21 +54,3 @@ export default function Random(){
      </View>
     );
 } 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontSize:12,
-    //alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor:'#fbd4ff',
-    padding:80,
-  },
-  text:{
-    overflow:'hidden',
-    fontSize:16,
-    backgroundColor:'#F7F9F9',
-    padding:20,
-    margin:50,
-    borderRadius:30,
-  }
-});

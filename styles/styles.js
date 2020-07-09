@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import url('https://fonts.googleapis.com/css2?family=Chewy&display=swap');
+
 
 export const styles = StyleSheet.create({
   container: {
@@ -13,10 +13,10 @@ export const styles = StyleSheet.create({
   text:{
     overflow:'hidden',
     fontSize:16,
-    fontFamily: 'Chewy', cursive,
+    // fontFamily: 'Chewy', cursive,
     backgroundColor:'#F7F9F9',
     padding:20,
     margin:50,
     borderRadius:30,
   },
-})
+});

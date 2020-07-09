@@ -5,7 +5,7 @@ import Random from './component/randomMaker';
 
 export default function App() {
   return (
-    <View style={styles.container}>
+    <View>
       <Random/>
     </View>
   );

@@ -1,32 +1,24 @@
-import React, {useState, useEffect} from 'react';
+import React,{useState, useEffect}from 'react';
 import {StyleSheet, Text, View,Button} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
-import{styles} from "../styles/styles.js"
 // import {When} from './when.js'
 // import { WorldAlignmentTypes } from 'expo/build/AR';
-// import { render } from 'react-dom';
 
 export default function Random(){  
-  const [random,setRandom] = useState('Just shake for a joke')
-
-    // let listOfStr=['Yes','No','Try Again Later','Might Not Be A Good Idea', 'Go for it','Aright','Definitely go for it', 'That A Great Idea', 'You Might Want to Rethink Your Decisions'];
+  const [random,setRandom]= useState(' Just Shake your phone for a joke')
   // site for the joke api to pull randon joke
-  const url = "https://official-joke-api.appspot.com/jokes/random";
+  let url = "https://v2.jokeapi.dev/joke/Any";
 
-  let getJokes = () => {
-  return fetch(url)
-      .then((response) => response.json())
-      .then((json) => setRandom(json.jokes))
-      .catch((error) => console.error(error))
-      .finally(()=>setLoading(false));
-      };
-
-
+  const fetchData = async () => { 
+    const respone = await axios.get(url);
+    setRandom(respone.data);
+  };
+  
     //let randomMaker = listOfStr[Math.floor(Math.random()*listOfStr.length)];
   //console.log(randomMaker,'line 8')
    
   const _handlePress=()=>{
-      setRandom(getJokes)
+      fetchData()
      // console.log('I got in!')
     }
  useEffect(()=>{
@@ -39,18 +31,32 @@ export default function Random(){
     }
   }
  )})
-
-
-  return(
-
-    <View style={styles.container}>
-      {/* <When condition={true}>
-        <Button title='Click on Me' onPress={_handlePress}/>
-      </When> */}
-      <Text style= {styles.text}>
-        {random}
-      </Text>
-    </View>
-  );
-}
-
+    return (
+     <View style={styles.container}>
+        {/* <When condition={true}>
+          <Button title='Click on Me' onPress={_handlePress}/>
+        </When> */}
+        <Text style= {styles.text}>
+          {random}
+        </Text>
+     </View>
+    );
+} 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    fontSize:12,
+    //alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor:'#fbd4ff',
+    padding:80,
+  },
+  text:{
+    overflow:'hidden',
+    fontSize:16,
+    backgroundColor:'#F7F9F9',
+    padding:20,
+    margin:50,
+    borderRadius:30,
+  }
+});

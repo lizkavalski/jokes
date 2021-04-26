@@ -7,21 +7,15 @@ import { WorldAlignmentTypes } from 'expo/build/AR';
 export default function Random(){  
    const [random,setRandom]=useState(' Just Shake your phone for a joke')
 
-    // let listOfStr=['Yes','No','Try Again Later','Might Not Be A Good Idea', 'Go for it','Aright','Definitely go for it', 'That A Great Idea', 'You Might Want to Rethink Your Decisions'];
   // site for the joke api to pull randon joke
-  let url = "https://official-joke-api.appspot.com/jokes/random";
+  let url = "https://v2.jokeapi.dev/joke/Any";
 
-  let componentDidMount(){
-    fetch(url)
-      .then(results => results.json())
-      .then((resultsJson) => {
-        this.SetState({
-          'Question': results.setup,
-          'Answer': results.punchline
-        })
-      })
-      .catch(error=>console.log(error)) //to catch the errors if any
-  }
+const fetchData = async () => { 
+  const respone = await axios.get(url);
+  setRandom(respone.data);
+
+};
+
 
 
 

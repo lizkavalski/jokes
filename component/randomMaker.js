@@ -1,29 +1,24 @@
-import React from 'react';
+import React,{useState, useEffect}from 'react';
 import {StyleSheet, Text, View,Button} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
-import {When} from './when.js'
-import { WorldAlignmentTypes } from 'expo/build/AR';
+// import {When} from './when.js'
+// import { WorldAlignmentTypes } from 'expo/build/AR';
 
 export default function Random(){  
-   const [random,setRandom]=useState(' Just Shake your phone for a joke')
-
+  const [random,setRandom]= useState(' Just Shake your phone for a joke')
   // site for the joke api to pull randon joke
   let url = "https://v2.jokeapi.dev/joke/Any";
 
-const fetchData = async () => { 
-  const respone = await axios.get(url);
-  setRandom(respone.data);
-
-};
-
-
-
-
+  const fetchData = async () => { 
+    const respone = await axios.get(url);
+    setRandom(respone.data);
+  };
+  
     //let randomMaker = listOfStr[Math.floor(Math.random()*listOfStr.length)];
   //console.log(randomMaker,'line 8')
    
   const _handlePress=()=>{
-      setRandom(Random)
+      fetchData()
      // console.log('I got in!')
     }
  useEffect(()=>{
@@ -42,7 +37,7 @@ const fetchData = async () => {
           <Button title='Click on Me' onPress={_handlePress}/>
         </When> */}
         <Text style= {styles.text}>
-         {this.state}
+          {random}
         </Text>
      </View>
     );

@@ -1,6 +1,8 @@
 import React,{useState, useEffect}from 'react';
 import {StyleSheet, Text, View,Button} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
+import {axios} from 'axios';
+import{style} from '../styles/styles';
 // import {When} from './when.js'
 // import { WorldAlignmentTypes } from 'expo/build/AR';
 
@@ -11,22 +13,20 @@ export default function Random(){
 
   const fetchData = async () => { 
     const respone = await axios.get(url);
+    console.log(respone)
     setRandom(respone.data);
   };
-  
-    //let randomMaker = listOfStr[Math.floor(Math.random()*listOfStr.length)];
-  //console.log(randomMaker,'line 8')
    
   const _handlePress=()=>{
       fetchData()
-     // console.log('I got in!')
+      console.log('I got in!')
     }
  useEffect(()=>{
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
     if(acceleration.x >.8 && acceleration.z >.5){
       _handlePress()
-     // console.log("cool");
+      console.log("cool");
       DeviceMotion.removeAllListeners()
     }
   }

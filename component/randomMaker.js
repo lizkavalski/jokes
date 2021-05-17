@@ -2,80 +2,42 @@ import React,{useState, useEffect}from 'react';
 import {StyleSheet, Text, View, ActivityIndicator, FlatList,} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
 import {axios} from 'axios';
-import{style} from '../styles/styles';
-// import {When} from './when.js'
-// import { WorldAlignmentTypes } from 'expo/build/AR';
+import styles from '../styles/styles';
 
-export default class Random extends App{  
-  constructor(props){
-    super(props);
-    this.state= {
-      data:[{joke:' Just Shake your phone for a joke'}],
-      isLoading:true
-    }
-  }
-  // const [isLoading, setLoading]=useState(true);
-  // const [random,setRandom]= useState([{title:' Just Shake your phone for a joke'}])
+export default Random = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState({jokes:'shake the device'});
   // site for the joke api to pull randon joke
-  // let url = "https://v2.jokeapi.dev/joke/Any?type=single";
+  let url = "https://v2.jokeapi.dev/joke/Any?type=single";
 
-  fetchData() { 
-   return fetch('https://v2.jokeapi.dev/joke/Any?type=single')
-    .then ((respone)=> respone.json)
-    .then((json)=>this.setState({data:json.joke}))
+  let fetchData=()=> { 
+   return fetch(url)
+    .then((response) => response.json())
+    .then((json) => setData(json.joke))
     .catch((error) => console.error(error))
-      .finally(() => {this.setState({isLoading:false});
-    })
+    .finally(() => setLoading(false));
   };
-    
-  // const _handlePress=()=>{
-  //     fetchData()
-  //     console.log('I got in!')
-  //   }
- useEffect(){
-  let acceleration={ x:5,y:5,z:5}
+
+  const _handlePress=()=>{
+      fetchData()
+    }
+ useEffect(() => {
+  let acceleration={ x:4,y:4,z:4}
   DeviceMotion.addListener(({acceleration})=> {
     if(acceleration.x >.8 && acceleration.z >.5){
-      fetchData()
+      _handlePress()
       console.log("cool");
       DeviceMotion.removeAllListeners()
     }
-  }
- )};
-  render(){
-    const{data, isLoading}=this.state;
+  })
+},[])
       return (
-        <View>
-          {isLoading ? <ActivityIndicator/> : (
-            <FlatList
-              data={data}
-              keyExtractor={({ id }, index) => id}
-              renderItem={({ item }) => (
-                <Text>{item.joke}</Text>
-              )}
-            />
-          )}
+        <View  style={styles.container}>
+          <Text>Shake your Device for a Joke</Text>
+          {isLoading ? <ActivityIndicator style={styles.text}/> : (<Text style={styles.text}>{data}</Text>)}
       </View>
     );
-  } 
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontSize:12,
-    //alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor:'#fbd4ff',
-    padding:80,
-  },
-  text:{
-    overflow:'hidden',
-    fontSize:16,
-    backgroundColor:'#F7F9F9',
-    padding:20,
-    margin:50,
-    borderRadius:30,
-  }
-});
+
+};
 
 

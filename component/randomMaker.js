@@ -3,8 +3,6 @@ import {StyleSheet, Text, View, ActivityIndicator, FlatList,} from 'react-native
 import { DeviceMotion} from 'expo-sensors';
 import {axios} from 'axios';
 import styles from '../styles/styles';
-// import {When} from './when.js'
-// import { WorldAlignmentTypes } from 'expo/build/AR';
 
 export default Random = () => {
   const [isLoading, setLoading] = useState(true);

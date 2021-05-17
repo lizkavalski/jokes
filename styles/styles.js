@@ -1,21 +1,24 @@
 import {StyleSheet} from 'react-native';
 
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
   container: {
     flex: 1,
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
     backgroundColor:'#fbd4ff',
   },
   text:{
-    // overflow:'hidden',
+    overflow:'hidden',
+    backgroundColor: 'white',
     fontSize:16,
-    backgroundColor:'#F7F9F9',
-    padding:20,
-    margin:50,
-    borderRadius:30,
+    margin:25,
+    padding:15,
+    borderRadius: 15,
+    borderWidth: 1.5,
+    borderColor:'pink',
   },
 });
+
+export default styles;

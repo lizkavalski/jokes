@@ -4,16 +4,15 @@ import {StyleSheet} from 'react-native';
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
-    fontSize:12,
-    //alignItems: 'center',
+    fontWeight: 'bold',
     justifyContent: 'center',
+    alignItems: 'center',
+    margin: 10,
     backgroundColor:'#fbd4ff',
-    padding:80,
   },
   text:{
-    overflow:'hidden',
+    // overflow:'hidden',
     fontSize:16,
-    // fontFamily: 'Chewy', cursive,
     backgroundColor:'#F7F9F9',
     padding:20,
     margin:50,

@@ -1,5 +1,5 @@
 import React,{useState, useEffect}from 'react';
-import {StyleSheet, Text, View, ActivityIndicator, FlatList,} from 'react-native';
+import {StyleSheet, Text, View, ActivityIndicator, FlatList, Button,} from 'react-native';
 import { DeviceMotion} from 'expo-sensors';
 import {axios} from 'axios';
 import styles from '../styles/styles';
@@ -18,14 +18,15 @@ export default Random = () => {
     .finally(() => setLoading(false));
   };
 
-  const _handlePress=()=>{
+  const handlePress=()=>{
+    console.log('i got clicked')
       fetchData()
     }
  useEffect(() => {
-  let acceleration={ x:4,y:4,z:4}
+  let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
     if(acceleration.x >.8 && acceleration.z >.5){
-      _handlePress()
+      handlePress()
       console.log("cool");
       DeviceMotion.removeAllListeners()
     }
@@ -34,7 +35,12 @@ export default Random = () => {
       return (
         <View  style={styles.container}>
           <Text>Shake your Device for a Joke</Text>
-          {isLoading ? <ActivityIndicator style={styles.text}/> : (<Text style={styles.text}>{data}</Text>)}
+          {isLoading ? <ActivityIndicator style={styles.text}/> 
+            :(
+             <View>
+              <Text style={styles.text}>{data}</Text>
+              <Button title='Click here!' onPress={handlePress}/>
+            </View>)}
       </View>
     );
 

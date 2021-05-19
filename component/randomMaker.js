@@ -25,7 +25,7 @@ export default Random = () => {
  useEffect(() => {
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
-    if(acceleration.x >.8 && acceleration.z >.5){
+    if(acceleration.x >.5 && acceleration.z >.5){
       handlePress()
       console.log("cool");
       DeviceMotion.removeAllListeners()

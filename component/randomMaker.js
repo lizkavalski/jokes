@@ -22,16 +22,14 @@ export default Random = () => {
     console.log('i got clicked')
       fetchData()
     }
- useEffect(() => {
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
-    if(acceleration.x >.5 && acceleration.z >.5){
+    if(acceleration.x >.8 && acceleration.z >.8){
       handlePress()
       console.log("cool");
       DeviceMotion.removeAllListeners()
     }
   })
-},[])
       return (
         <View  style={styles.container}>
           <Text>Shake your Device for a Joke</Text>

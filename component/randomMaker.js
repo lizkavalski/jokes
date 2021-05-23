@@ -24,8 +24,8 @@ export default Random = () => {
     }
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
-    if(acceleration.x >.8 && acceleration.z >.8){
-      handlePress()
+    if(acceleration.x >.9 && acceleration.z >.5){
+      fetchData()
       console.log("cool");
       DeviceMotion.removeAllListeners()
     }

@@ -20,14 +20,14 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor:'#fbd4ff',
+    backgroundColor:'white',
   },
   heading:{
-    
     flex: .10,
     fontWeight: 'bold',
     justifyContent: 'center',
     alignItems: 'center',
+    paddingTop:5,
   },
   text:{
     overflow:'hidden',
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     padding:15,
     borderRadius: 15,
     borderWidth: 1.5,
-    borderColor:'pink',
+    borderColor:'blue',
   },
 });
 

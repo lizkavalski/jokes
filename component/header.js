@@ -14,7 +14,7 @@ export default Header =()=> {
     return (
     <>
     <View style={styles.heading}>
-      <Text style={{fontFamily: 'BalooTammudu2_400Regular', fontSize:28, color:'#ffb347'}}>
+      <Text style={{fontFamily: 'BalooTammudu2_400Regular', fontSize:40, color:'#ffb347',textShadowColor:'black', shadowOffset:{width:-1,height:0},textShadowRadius: 1}}>
         Shake-in-Laugh  
       </Text>
     </View>

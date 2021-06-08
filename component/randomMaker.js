@@ -34,7 +34,6 @@ export default Random = () => {
   })
       return (
         <View  style={styles.container}>
-          {/* <Text style={{fontFamily:'BalooTammudu2_400Regular', fontSize:24, color:'#ffb347'}}> Shake-in-Laugh </Text> */}
           <Text>Shake your Device for a Joke</Text>
           {isLoading ? <ActivityIndicator style={styles.text}/> 
             :(

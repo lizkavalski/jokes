@@ -1,8 +1,10 @@
 import React,{useState, useEffect}from 'react';
 import {StyleSheet, Text, View, ActivityIndicator, FlatList, Button,} from 'react-native';
+import {AppLoading} from "expo";
 import { DeviceMotion} from 'expo-sensors';
-import {axios} from 'axios';
+//import {axios} from 'axios';
 import styles from '../styles/styles';
+// import { useFonts, BalooTammudu2_400Regular,} from '@expo-google-fonts/baloo-tammudu-2';
 
 export default Random = () => {
   const [isLoading, setLoading] = useState(true);
@@ -32,6 +34,7 @@ export default Random = () => {
   })
       return (
         <View  style={styles.container}>
+          {/* <Text style={{fontFamily:'BalooTammudu2_400Regular', fontSize:24, color:'#ffb347'}}> Shake-in-Laugh </Text> */}
           <Text>Shake your Device for a Joke</Text>
           {isLoading ? <ActivityIndicator style={styles.text}/> 
             :(

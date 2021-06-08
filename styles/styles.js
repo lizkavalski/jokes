@@ -1,5 +1,18 @@
 import {StyleSheet} from 'react-native';
+// import { 
+//   useFonts,
+//   BalooTammudu2_400Regular,
+//   BalooTammudu2_500Medium,
+//   BalooTammudu2_600SemiBold,
+//   BalooTammudu2_700Bold,
+//   BalooTammudu2_800ExtraBold 
+// } from '@expo-google-fonts/baloo-tammudu-2';
 
+// let headingfont=()=>{
+//   let[fontsLoaded,error]=useFonts({
+//     BalooTammudu2_400Regular,
+//   });
+// }
 
 const styles = StyleSheet.create({
   container: {
@@ -9,9 +22,16 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor:'#fbd4ff',
   },
+  heading:{
+    
+    flex: .10,
+    fontWeight: 'bold',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   text:{
     overflow:'hidden',
-    backgroundColor: 'white',
+    backgroundColor: '#dcdcdc',
     fontSize:16,
     margin:25,
     padding:15,

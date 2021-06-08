@@ -39,6 +39,24 @@ const styles = StyleSheet.create({
     borderWidth: 1.5,
     borderColor:'blue',
   },
+  linearGradient: {
+    margin:50,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderRadius: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    alignContent:'flex-end',
+  },
+  buttonText: {
+    fontSize: 18,
+    fontFamily: 'Gill Sans',
+    textAlign: 'center',
+    margin: 10,
+    padding:5,
+    color: '#ffffff',
+    backgroundColor: 'transparent',
+  },
 });
 
 export default styles;

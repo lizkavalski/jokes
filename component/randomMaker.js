@@ -4,7 +4,8 @@ import {AppLoading} from "expo";
 import { DeviceMotion} from 'expo-sensors';
 //import {axios} from 'axios';
 import styles from '../styles/styles';
-// import { useFonts, BalooTammudu2_400Regular,} from '@expo-google-fonts/baloo-tammudu-2';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 export default Random = () => {
   const [isLoading, setLoading] = useState(true);
@@ -26,7 +27,7 @@ export default Random = () => {
     }
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
-    if(acceleration.x >.9 && acceleration.z >.5){
+    if(acceleration.x > .9 && acceleration.z >.9){
       fetchData()
       console.log("cool");
       DeviceMotion.removeAllListeners()
@@ -39,7 +40,9 @@ export default Random = () => {
             :(
              <View>
               <Text style={styles.text}>{data}</Text>
-              <Button title='Click here!' onPress={handlePress}/>
+              <LinearGradient colors={['#1F618D', '#5DADE2', '#AED6F1']} style={styles.linearGradient}>
+              <Text style={styles.buttonText} onPress={handlePress}> Click me!</Text>
+              </LinearGradient>
             </View>)}
       </View>
     );

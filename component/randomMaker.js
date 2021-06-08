@@ -34,17 +34,24 @@ export default Random = () => {
     }
   })
       return (
-        <View  style={styles.container}>
+        <>
+        <View style={styles.container}>
           <Text>Shake your Device for a Joke</Text>
           {isLoading ? <ActivityIndicator style={styles.text}/> 
             :(
              <View>
               <Text style={styles.text}>{data}</Text>
-              <LinearGradient colors={['#1F618D', '#5DADE2', '#AED6F1']} style={styles.linearGradient}>
+            </View>
+            )}
+              <LinearGradient 
+              colors={[ '#AED6F1','#5DADE2','#1F618D']} 
+              start={[0.0, 0.0]}
+              end={[1.0, 1.0]}
+              style={styles.linearGradient}>
               <Text style={styles.buttonText} onPress={handlePress}> Click me!</Text>
               </LinearGradient>
-            </View>)}
-      </View>
+        </View>
+        </>
     );
 
 };

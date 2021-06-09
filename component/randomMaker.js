@@ -7,11 +7,12 @@ import styles from '../styles/styles';
 import { LinearGradient } from 'expo-linear-gradient';
 
 
+
 export default Random = () => {
   const [isLoading, setLoading] = useState(true);
   const [data, setData] = useState({jokes:'shake the device'});
   // site for the joke api to pull randon joke
-  let url = "https://v2.jokeapi.dev/joke/Any?type=single";
+  let url = process.env.JokeAPI;
 
   let fetchData=()=> { 
    return fetch(url)

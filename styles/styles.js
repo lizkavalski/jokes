@@ -1,32 +1,12 @@
 import {StyleSheet} from 'react-native';
-// import { 
-//   useFonts,
-//   BalooTammudu2_400Regular,
-//   BalooTammudu2_500Medium,
-//   BalooTammudu2_600SemiBold,
-//   BalooTammudu2_700Bold,
-//   BalooTammudu2_800ExtraBold 
-// } from '@expo-google-fonts/baloo-tammudu-2';
-
-// let headingfont=()=>{
-//   let[fontsLoaded,error]=useFonts({
-//     BalooTammudu2_400Regular,
-//   });
-// }
 
 const styles = StyleSheet.create({
   container: {
+    flex:1,
     flexDirection:'column',
-    borderWidth: 1.5,
-    borderColor:'blue',
     fontWeight: 'bold',
     alignItems: 'center',
     backgroundColor:'white',
-  },
-  heading:{
-    fontSize:20,
-    borderWidth: 1.5,
-    borderColor:'blue',
   },
   text:{
     overflow:'hidden',
@@ -35,8 +15,6 @@ const styles = StyleSheet.create({
     margin:25,
     padding:15,
     borderRadius: 15,
-    borderWidth: 1.5,
-    borderColor:'blue',
   },
   linearGradient: {
     margin:50,

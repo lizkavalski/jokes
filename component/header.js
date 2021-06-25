@@ -10,20 +10,24 @@ export default Header =()=> {
     BalooTammudu2_400Regular,
   });
   const headStyle = StyleSheet.create({
-    container:{ß
+    container:{
       alignSelf:'center',
       justifyContent:'center',
     },
     title:{
       fontFamily: 'BalooTammudu2_400Regular', 
       fontSize:45, 
+      includeFontPadding:false,
       color:'#ffb347',
-      textShadowColor:'black', 
-      shadowOffset:{width:-1,height:2},
-      textShadowRadius: 1, 
-      borderWidth: 1.5,
-      borderColor:'red',
-    }
+
+    },
+    heading:{
+      fontSize:15,
+      alignSelf:'center',
+      justifyContent:'center',
+      position:'absolute',
+      top:65,
+    },
   })
   if(!fontsLoaded){
     return <AppLoading/>
@@ -31,9 +35,8 @@ export default Header =()=> {
     return (
     <>
     <View style={headStyle.container}>
-      <Text style={headStyle.title}>
-        Shake-in-Laugh  
-      </Text>
+      <Text style={headStyle.title}>Shake-in-Laugh</Text>
+      <Text style={headStyle.heading}>Shake your Device for a Joke</Text>
     </View>
     </>
 

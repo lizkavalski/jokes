@@ -16,23 +16,22 @@ import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    flexDirection:'column',
+    borderWidth: 1.5,
+    borderColor:'blue',
     fontWeight: 'bold',
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor:'white',
   },
   heading:{
-    flex: .10,
-    fontWeight: 'bold',
-    justifyContent: 'center',
-    alignItems: 'center',
-    paddingTop:5,
+    fontSize:20,
+    borderWidth: 1.5,
+    borderColor:'blue',
   },
   text:{
     overflow:'hidden',
     backgroundColor: '#dcdcdc',
-    fontSize:16,
+    fontSize:20,
     margin:25,
     padding:15,
     borderRadius: 15,

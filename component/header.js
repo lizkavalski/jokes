@@ -10,7 +10,7 @@ export default Header =()=> {
     BalooTammudu2_400Regular,
   });
   const headStyle = StyleSheet.create({
-    container:{
+    container:{ß
       alignSelf:'center',
       justifyContent:'center',
     },
@@ -18,8 +18,6 @@ export default Header =()=> {
       fontFamily: 'BalooTammudu2_400Regular', 
       fontSize:45, 
       color:'#ffb347',
-      justifyContent:'center',
-
       textShadowColor:'black', 
       shadowOffset:{width:-1,height:2},
       textShadowRadius: 1, 

@@ -26,7 +26,8 @@ export default Header =()=> {
       alignSelf:'center',
       justifyContent:'center',
       position:'absolute',
-      top:65,
+      fontStyle: 'italic',
+      top:75,
     },
   })
   if(!fontsLoaded){
@@ -36,7 +37,7 @@ export default Header =()=> {
     <>
     <View style={headStyle.container}>
       <Text style={headStyle.title}>Shake-in-Laugh</Text>
-      <Text style={headStyle.heading}>Shake your Device for a Joke</Text>
+      <Text style={headStyle.heading}>*Shake your Device,or click the button for a joke*</Text>
     </View>
     </>
 

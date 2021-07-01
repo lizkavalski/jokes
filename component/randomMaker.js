@@ -1,81 +1,60 @@
 import React,{useState, useEffect}from 'react';
-import {StyleSheet, Text, View, ActivityIndicator, FlatList,} from 'react-native';
+import {StyleSheet, Text, View, ActivityIndicator, FlatList, Button,} from 'react-native';
+import {AppLoading} from "expo";
 import { DeviceMotion} from 'expo-sensors';
 import {axios} from 'axios';
-import{style} from '../styles/styles';
-// import {When} from './when.js'
-// import { WorldAlignmentTypes } from 'expo/build/AR';
+import styles from '../styles/styles';
+import { LinearGradient } from 'expo-linear-gradient';
 
-export default class Random extends App{  
-  constructor(props){
-    super(props);
-    this.state= {
-      data:[{joke:' Just Shake your phone for a joke'}],
-      isLoading:true
-    }
-  }
-  // const [isLoading, setLoading]=useState(true);
-  // const [random,setRandom]= useState([{title:' Just Shake your phone for a joke'}])
+
+
+export default Random = () => {
+  const [isLoading, setLoading] = useState(true);
+  const [data, setData] = useState({jokes:'shake the device'});
   // site for the joke api to pull randon joke
-  // let url = "https://v2.jokeapi.dev/joke/Any?type=single";
+  const JOKE_API= process.env.JokeAPI
+  let url = 'https://v2.jokeapi.dev/joke/Any?type=single';
 
-  fetchData() { 
-   return fetch('https://v2.jokeapi.dev/joke/Any?type=single')
-    .then ((respone)=> respone.json)
-    .then((json)=>this.setState({data:json.joke}))
+  let fetchData= ()=> { 
+    fetch(url)
+    .then((response) => response.json())
+    .then((json) => setData(json.joke))
     .catch((error) => console.error(error))
-      .finally(() => {this.setState({isLoading:false});
-    })
+    .finally(() => setLoading(false));
   };
-    
-  // const _handlePress=()=>{
-  //     fetchData()
-  //     console.log('I got in!')
-  //   }
- useEffect(){
+
+  const handlePress=()=>{
+    console.log('i got clicked')
+      fetchData()
+    }
   let acceleration={ x:5,y:5,z:5}
   DeviceMotion.addListener(({acceleration})=> {
-    if(acceleration.x >.8 && acceleration.z >.5){
+    if(acceleration.x > .9 && acceleration.z >.9){
       fetchData()
       console.log("cool");
       DeviceMotion.removeAllListeners()
     }
-  }
- )};
-  render(){
-    const{data, isLoading}=this.state;
+  })
       return (
-        <View>
-          {isLoading ? <ActivityIndicator/> : (
-            <FlatList
-              data={data}
-              keyExtractor={({ id }, index) => id}
-              renderItem={({ item }) => (
-                <Text>{item.joke}</Text>
-              )}
-            />
-          )}
-      </View>
+        <>
+        <View style={styles.container}>
+          {isLoading ? <ActivityIndicator style={styles.text}/> 
+            :(
+             <View>
+              <Text style={styles.text}>{data}</Text>
+            </View>
+            )}
+              <LinearGradient 
+              colors={[ '#AED6F1','#5DADE2','#1F618D']} 
+              start={[0.0, 0.0]}
+              end={[1.0, 1.0]}
+              style={styles.linearGradient}>
+              <Text style={styles.buttonText} onPress={handlePress}> Click me!</Text>
+              </LinearGradient>
+        </View>
+        </>
     );
-  } 
-}
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontSize:12,
-    //alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor:'#fbd4ff',
-    padding:80,
-  },
-  text:{
-    overflow:'hidden',
-    fontSize:16,
-    backgroundColor:'#F7F9F9',
-    padding:20,
-    margin:50,
-    borderRadius:30,
-  }
-});
+
+};
 
 

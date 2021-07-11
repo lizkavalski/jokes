@@ -2,7 +2,7 @@
 ## Summery
 Using react-native to generate a random joke from a third party API. 
 
-Languages and Tools used: React Native, Expo, Google Fonts and used Figma for the wireframing
+Languages and Tools used: React Native, Expo, Google Fonts and used Figma for the wireframing and design
 
 ## 3rd party API
 
